@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mini-project-8-ecommerce-react-bootstrap/static/css/main.459988ab.css",
+    "main.js": "/mini-project-8-ecommerce-react-bootstrap/static/js/main.a003c153.js",
+    "index.html": "/mini-project-8-ecommerce-react-bootstrap/index.html",
+    "main.459988ab.css.map": "/mini-project-8-ecommerce-react-bootstrap/static/css/main.459988ab.css.map",
+    "main.a003c153.js.map": "/mini-project-8-ecommerce-react-bootstrap/static/js/main.a003c153.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.459988ab.css",
+    "static/js/main.a003c153.js"
+  ]
+}
