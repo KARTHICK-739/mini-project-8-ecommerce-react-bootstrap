@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import NavBar from "./components/NavBar";
+// To this
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import ProductGrid from "./components/ProductGrid";
+import ProductScreen from "./components/ProductScreen";
 import CartModal from "./components/CartModal";
+import Footer from "./components/Footer";
+import SignupScreen from "./screens/SignupScreen";
 import products from "./products";
+import NavBar from "./components/NavBar";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -27,20 +32,35 @@ function App() {
     setCartItems(cartItems.filter((item) => item.id !== id));
   };
 
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   return (
-    <div>
-      <NavBar
-        cartCount={cartItems.reduce((total, item) => total + item.quantity, 0)}
-        onCartClick={() => setShowCart(true)}
-      />
-      <ProductGrid products={products} addToCart={addToCart} />
+    <Router>
+      <NavBar cartCount={cartCount} onCartClick={() => setShowCart(true)} />
+
+      <main style={{ minHeight: "80vh" }}>
+        <Routes>
+          <Route
+            path="/"
+            element={<ProductGrid products={products} addToCart={addToCart} />}
+          />
+          <Route
+            path="/product/:id"
+            element={<ProductScreen addToCart={addToCart} />}
+          />
+          <Route path="/signup" element={<SignupScreen />} />
+        </Routes>
+      </main>
+
       <CartModal
         show={showCart}
         onHide={() => setShowCart(false)}
         cartItems={cartItems}
         removeFromCart={removeFromCart}
       />
-    </div>
+
+      <Footer />
+    </Router>
   );
 }
 
